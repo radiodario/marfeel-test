@@ -1,12 +1,14 @@
 var assign = require('object-assign')
+var SimplexNoise = require('simplex-noise');
+var simplex = new SimplexNoise();
 
 module.exports = function Model(options) {
   var defaults = {
     title: 'title',
-    unit: '',
+    unit: '€',
     radius: 500,
-    phoneColor: 'rgb(0, 200, 0)',
-    tabletColor: 'rgb(0, 250, 0)',
+    tabletColor: 'rgb(79, 208, 37)',
+    phoneColor: 'rgb(15, 89, 0)',
     data: {
       phoneAmount: 80000,
       tabletAmount: 120000,
@@ -34,8 +36,8 @@ module.exports = function Model(options) {
 
 function makeRandomAmounts() {
   var amounts = [];
-  for (var i = 0; i < 100; i++) {
-    amounts.push((Math.random() * 1000) | 0);
+  for (var i = 0; i < 24; i++) {
+    amounts.push(2.5 + simplex.noise2D(i, i));
   }
   return amounts;
 }

@@ -1,28 +1,29 @@
 <div class="counter">
-  <div class="graphic"></div>
+  <div class="graphic">
+  </div>
   <div class="counter__table">
-    <div class="counter__table--tablet">
+    <div class="counter__table__cell">
       <h3 class="counter__table__title" style="color: <%= tabletColor %>">
         Tablet
       </h3>
-      <div class="counter__table__row">
-        <span class="counter__table__row__percentage">
+      <div class="counter__table__data">
+        <span class="counter__table__data__percentage">
           <%= data.tabletPct %>%
         </span>
-        <span class="counter__table__row__value">
+        <span class="counter__table__data__value">
           <%= data.tabletAmount %> <%= unit %>
         </span>
       </div>
     </div>
-    <div class="counter__table--phone">
+    <div class="counter__table__cell right">
       <h3 class="counter__table__title" style="color: <%= phoneColor %>">
         Smartphone
       </h3>
-      <div class="counter__table__row">
-        <span class="counter__table__row__percentage">
+      <div class="counter__table__data">
+        <span class="counter__table__data__percentage">
           <%= data.phonePct %>%
         </span>
-        <span class="counter__table__row__value">
+        <span class="counter__table__data__value">
           <%= data.phoneAmount %> <%= unit %>
         </span>
       </div>

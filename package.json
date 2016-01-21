@@ -21,7 +21,9 @@
   "dependencies": {
     "d3": "^3.5.13",
     "ejs": "^2.3.4",
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.0.1",
+    "simplex-noise": "^2.2.0",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "brfs": "^1.4.3",
