@@ -1,8 +1,7 @@
 var assign = require('object-assign')
 
 module.exports = function Model(options) {
-
-  var m = {
+  var defaults = {
     title: 'title',
     unit: '',
     radius: 500,
@@ -12,10 +11,24 @@ module.exports = function Model(options) {
       phoneAmount: 80000,
       tabletAmount: 120000,
       timeSeries: makeRandomAmounts()
-    }
+    },
   };
 
-  return assign(m, options);
+  var model = {
+    props : assign(defaults, options),
+    toJSON: function() {
+      return JSON.parse(JSON.stringify(this.props));
+    },
+    calculatePercentages: function() {
+      var tabletAmt = this.props.data.tabletAmount;
+      var phoneAmt = this.props.data.phoneAmount;
+      var total = tabletAmt + phoneAmt;
+      this.props.data.tabletPct = (tabletAmt / total * 100) | 0;
+      this.props.data.phonePct = (phoneAmt / total * 100) | 0;
+    }
+  }
+
+  return model;
 }
 
 

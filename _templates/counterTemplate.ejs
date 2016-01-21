@@ -1,0 +1,31 @@
+<div class="counter">
+  <div class="graphic"></div>
+  <div class="counter__table">
+    <div class="counter__table--tablet">
+      <h3 class="counter__table__title">
+        Tablet
+      </h3>
+      <div class="counter__table__row">
+        <span class="counter__table__row__percentage">
+          <%= data.tabletPct %>%
+        </span>
+        <span class="counter__table__row__value">
+          <%= data.tabletAmount %> <%= unit %>
+        </span>
+      </div>
+    </div>
+    <div class="counter__table--phone">
+      <h3 class="counter__table__title">
+        Smartphone
+      </h3>
+      <div class="counter__table__row">
+        <span class="counter__table__row__percentage">
+          <%= data.phonePct %>%
+        </span>
+        <span class="counter__table__row__value">
+          <%= data.phoneAmount %> <%= unit %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
