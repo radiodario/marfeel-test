@@ -13,7 +13,6 @@ View.prototype.render = function(data) {
   this.model.calculatePercentages();
   var props = this.model.toJSON();
   this.el.innerHTML = ejs.render(template, props);
-
 };
 
 module.exports = View;
