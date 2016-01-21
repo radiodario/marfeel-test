@@ -39,7 +39,7 @@ describe('Model', function() {
     expect(m.data).to.be.an.object;
     expect(m.data.phoneAmount).to.be.a.number;
     expect(m.data.tabletAmount).to.be.a.number;
-    expect(m.data.timeSeries).to.be.an.array;
+    expect(m.timeSeries).to.be.an.array;
   });
 
   describe('#toJSON', function() {
@@ -65,7 +65,7 @@ describe('Model', function() {
       expect(m.data).to.be.an.object;
       expect(m.data.phoneAmount).to.be.a.number;
       expect(m.data.tabletAmount).to.be.a.number;
-      expect(m.data.timeSeries).to.be.an.array;
+      expect(m.timeSeries).to.be.an.array;
     });
   });
 
@@ -82,4 +82,28 @@ describe('Model', function() {
       expect(data.phonePct).to.equal(40);
     });
   });
+
+  describe('#formatData', function() {
+    it('should be a function', function() {
+      var m = Model();
+      expect(m.formatData).to.be.a.function;
+    });
+    it('should add formatted data', function() {
+      var m = Model({
+        unit: '€',
+        data: {
+          phoneAmount: 10000,
+          tabletAmount: 20000
+        }
+      });
+
+      m.formatData();
+
+      var props = m.toJSON();
+
+      expect(props.tabletAmount).to.equal('20,000 €');
+      expect(props.phoneAmount).to.equal('10,000 €');
+
+    })
+  })
 });

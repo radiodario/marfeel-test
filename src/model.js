@@ -6,7 +6,7 @@ var d3 = require('d3');
 module.exports = function Model(options) {
   var defaults = {
     title: 'title',
-    unit: '€',
+    unit: '',
     radius: 500,
     tabletColor: 'rgb(79, 208, 37)',
     phoneColor: 'rgb(15, 89, 0)',
@@ -31,8 +31,9 @@ module.exports = function Model(options) {
     },
     formatData: function() {
       var formatter = d3.format('n');
-      this.props.tabletAmount = formatter(this.props.data.tabletAmount);
-      this.props.phoneAmount = formatter(this.props.data.phoneAmount);
+      var unit = this.props.unit;
+      this.props.tabletAmount = formatter(this.props.data.tabletAmount) + ' ' + unit;
+      this.props.phoneAmount = formatter(this.props.data.phoneAmount) + ' ' + unit;
     }
   }
 
