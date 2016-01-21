@@ -1,6 +1,5 @@
 var assign = require('object-assign')
 var SimplexNoise = require('simplex-noise');
-var simplex = new SimplexNoise();
 var d3 = require('d3');
 
 module.exports = function Model(options) {
@@ -42,6 +41,8 @@ module.exports = function Model(options) {
 
 
 function makeRandomAmounts() {
+
+  var simplex = new SimplexNoise();
   var amounts = [];
   for (var i = 0; i < 24; i++) {
     amounts.push(2.5 + simplex.noise2D(i, i));
