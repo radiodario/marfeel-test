@@ -1,7 +1,7 @@
 var d3 = require('d3');
 var ejs = require('ejs');
 var fs = require('fs');
-var template = fs.readFileSync(__dirname + '/template.ejs', 'utf8');
+var template = fs.readFileSync(__dirname + '/../_templates/template.ejs', 'utf8');
 var Model = require('./model');
 var DonutChart = require('./donutChart');
 
