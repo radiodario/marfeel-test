@@ -7,12 +7,13 @@ var DonutChart = require('./donutChart');
 
 var View = function ViewConstructor(el, attrs) {
   this.model = Model(attrs);
-  this.el = document.querySelector(el);
+  this.el = el;
   this.chart = DonutChart();
 };
 
 View.prototype.render = function(data) {
   this.model.calculatePercentages();
+  this.model.formatData();
   var props = this.model.toJSON();
   this.el.innerHTML = ejs.render(template, props);
 
@@ -25,7 +26,7 @@ View.prototype.render = function(data) {
     ],
     title: props.title,
     unit: props.unit,
-    timeSeries: props.data.timeSeries,
+    timeSeries: props.timeSeries,
     colors: [
       props.phoneColor,
       props.tabletColor

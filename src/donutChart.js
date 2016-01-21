@@ -119,7 +119,7 @@ module.exports = function() {
 
       var title = g.select('text.title')
         .text(options.title)
-        .style('font-size', '30px')
+        .style('font-size', '24px')
         .style('text-anchor', 'middle')
         .style('text-transform', 'uppercase')
         .style('fill', '#AAA')
@@ -130,7 +130,7 @@ module.exports = function() {
           var sum = formatter(d3.sum(d));
           return sum +  options.unit;
         })
-        .style('font-size', '45px')
+        .style('font-size', '35px')
         .style('text-anchor', 'middle')
         .style('fill', '#333')
         .attr('alignment-baseline', 'middle')

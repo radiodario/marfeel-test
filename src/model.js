@@ -1,6 +1,7 @@
 var assign = require('object-assign')
 var SimplexNoise = require('simplex-noise');
 var simplex = new SimplexNoise();
+var d3 = require('d3');
 
 module.exports = function Model(options) {
   var defaults = {
@@ -11,9 +12,9 @@ module.exports = function Model(options) {
     phoneColor: 'rgb(15, 89, 0)',
     data: {
       phoneAmount: 80000,
-      tabletAmount: 120000,
-      timeSeries: makeRandomAmounts()
+      tabletAmount: 120000
     },
+    timeSeries: makeRandomAmounts()
   };
 
   var model = {
@@ -27,6 +28,11 @@ module.exports = function Model(options) {
       var total = tabletAmt + phoneAmt;
       this.props.data.tabletPct = (tabletAmt / total * 100) | 0;
       this.props.data.phonePct = (phoneAmt / total * 100) | 0;
+    },
+    formatData: function() {
+      var formatter = d3.format('n');
+      this.props.tabletAmount = formatter(this.props.data.tabletAmount);
+      this.props.phoneAmount = formatter(this.props.data.phoneAmount);
     }
   }
 
